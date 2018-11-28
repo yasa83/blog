@@ -8,8 +8,9 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(tweet_params)
+    Tweet.create(title: tweet_params[:title], text: tweet_params[:text])
   end
+
 
   private
   def tweet_params
