@@ -22,12 +22,19 @@
 
   <nav class="#00bfa5 teal accent-4">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo" style="margin-left: 40px;">Blog</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="waves-effect waves-light btn">Login</a></li>
-        <li><a class="waves-effect waves-light btn">Sign<i class="material-icons right">up</i></a></li>
-        <li><a class="waves-effect waves-light btn" href="/tweets/new">Post article</a></li>
       </ul>
+      <a href="tweets/index" class="brand-logo" style="margin-left: 40px;">Blog</a>
+      <% if user_signed_in? %>
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'waves-effect waves-light btn' %></li>
+          <li><a class="waves-effect waves-light btn" href="/tweets/new">Post article</a></li>
+        </ul>
+      <% else %>
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to "Login", new_user_session_path, class: 'post waves-effect waves-light btn' %></li>
+          <li><%= link_to "Signup", new_user_registration_path, class: 'post waves-effect waves-light btn' %></li>
+        </ul>
+      <% end %>
     </div>
   </nav>
 
