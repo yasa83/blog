@@ -1,0 +1,14 @@
+<div class="contents">
+  <div class="row">
+    <h2><%= @nickname %>さんの投稿一覧</h2>
+      <% @tweets.each do |tweet| %>
+        <div class="card cyan darken-4 col s12 m6 l8">
+          <div class="card-content white-text">
+            <%= simple_format(tweet.title) %>
+            <%= simple_format(tweet.text) %>
+          </div>
+        </div>
+      <% end %>
+    <%= paginate(@tweets) %>
+  </div>
+</div>

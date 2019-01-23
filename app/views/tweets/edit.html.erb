@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+  <div class="card white col s12 m6 l10">
+    <div class="card-content">
+    <%= form_with(url: "/tweets/#{@tweet.id}",local: true, method: :patch) do |f| %>
+    <h4>
+      Edit your article
+    </h4>
+    <%= f.text_field :title, value: @tweet.title %>
+    <%= f.text_field :text, value: @tweet.text %>
+      <button class="btn waves-effect waves-light" type="submit" name="action"><i class="material-icons">send</i>
+    <% end %>
+    </div>
+  </div>
+ </div>
+</div>
