@@ -1,25 +1,7 @@
-<div class="contents">
-  <div class="row">
-    <% @tweets.each do |tweet| %>
-    <div class="col s12 m6 l8">
-      <div class="card cyan darken-4">
-        <div class="card-content white-text">
-          <h5 style="color: gray"><%= tweet.user.nickname %>さんの投稿記事</h5>
-          <span class="card-title"><%= tweet.title %></span>
-          <p><%= tweet.text %></p>
-        </div>
-        <% if user_signed_in? && current_user.id == tweet.user_id %>
-        <div class="card-action">
-          <ul class="more_list">
-            <li><%= link_to 'Delete',"/tweets/#{tweet.id}",method: :delete %></li>
-            <li><%= link_to 'Edit',"/tweets/#{tweet.id}/edit",method: :get %></li>
-          </ul>
-        </div>
-        <% end %>
-      </div>
-    </div>
-    <% end %>
-    <%= paginate(@tweets) %>
+<div class="contents row">
+  <% @tweets.each do |tweet| %>
+    <%= render partial: "tweet", locals: {tweet: tweet} %>
+  <% end %>
+  <%= paginate(@tweets) %>
   </div>
 </div>
-
